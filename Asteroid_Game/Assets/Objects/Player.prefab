@@ -90,11 +90,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 50308328742841428}
-  turn: 1
+  turn: 2
   speed: 1
   fuel: 0
-  timer: 5
+  timer: 2
   fuelText: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!212 &212520593683941106
 SpriteRenderer:
   m_ObjectHideFlags: 1

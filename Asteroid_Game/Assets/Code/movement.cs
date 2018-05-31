@@ -43,6 +43,12 @@ public class movement : MonoBehaviour {
 		Vector2 movement = transform.up * moveVertical;
 		transform.eulerAngles = new Vector3 (0f, 0f, moveHorizontal * turn);
 		rb.AddForce (movement * speed);
+
+        if (fuel == 0)
+        {
+            Destroy(gameObject);
+            fuelText.text = "YOU LOSE!";
+        }
 	}
 
     private void OnCollisionEnter2D(Collision2D hit)
