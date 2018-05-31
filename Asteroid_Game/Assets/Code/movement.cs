@@ -13,18 +13,32 @@ public class movement : MonoBehaviour {
     public float timer;
     public Text fuelText;
 
+    public Animator anim;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
         fuel = 10f;
         fuelText.text = "Fuel: " + fuel.ToString();
         InvokeRepeating("FuelDown", timer, timer);
+
+        anim = GetComponent<Animator>();
     }
 
 	void Update()
 	{
 		moveHorizontal -= Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isMoving", true);
+        } else
+        {
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isMoving", false);
+        }
 
 		Vector2 movement = transform.up * moveVertical;
 		transform.eulerAngles = new Vector3 (0f, 0f, moveHorizontal * turn);
